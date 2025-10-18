@@ -213,8 +213,7 @@ function divide(){
     sumEL.textContent = "Divide:" + result
 }
 
-
-
+console.log("Js file updated")
 
 
 
