@@ -185,55 +185,207 @@
 //     document.getElementById("error").textContent = "Something went Wrong, Please try again"
 // }
 
-let num1 = 8
-let num2 = 2
-document.getElementById("num1-el").textContent = num1 
-document.getElementById("num2-el").textContent = num2 
+// let num1 = 8
+// let num2 = 2
+// document.getElementById("num1-el").textContent = num1 
+// document.getElementById("num2-el").textContent = num2 
 
-let sumEL = document.getElementById("sum-el")
+// let sumEL = document.getElementById("sum-el")
 
-function add(){
-    let result = num1 + num2
-    sumEL.textContent = "Sum:" + result
+// function add(){
+//     let result = num1 + num2
+//     sumEL.textContent = "Sum:" + result
+// }
+
+// function sub(){
+//     let result = num1 - num2
+//     sumEL.textContent = "Subtract:" + result
+// }
+
+// function mul(){
+//     let result = num1 * num2
+//     sumEL.textContent = "Multiply:" + result
+// }
+
+// function divide(){
+//     let result = num1 / num2
+//     sumEL.textContent = "Divide:" + result
+// }
+
+// console.log("Js file updated")
+
+// function rollDice(){
+//     let randomNumb = Math.floor(Math.random() *6)+1
+//     return randomNumb
+// }
+
+// console.log(rollDice())
+
+let cards = []
+let sum = 0
+let hasBlackJack = false
+let isAlive = false
+let message = ""
+let messageEL = document.getElementById('message-el')
+// let sumEL = document.getElementById("sum-el")
+let sumEL = document.querySelector("#sum-el") 
+let cardEL = document.querySelector("#cards-el") 
+
+
+let player = {
+     name : "Awaz:",
+     chips : 145,
+     sayHello : function(){
+        console.log("Hello")
+     }
 }
 
-function sub(){
-    let result = num1 - num2
-    sumEL.textContent = "Subtract:" + result
+// player.sayHello()
+
+let playerEL = document.querySelector("#player-el")
+
+playerEL.textContent =  player.name + " "+ "$" +player.chips
+
+function getRandomCard(){
+    let random_num = Math.floor(Math.random()*13)+1
+    if (random_num>10){
+        return 10
+    } else if(random_num==1){
+        return 11
+    } else{
+        return random_num
+    }
 }
 
-function mul(){
-    let result = num1 * num2
-    sumEL.textContent = "Multiply:" + result
+function startGame(){
+    isAlive = true
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard,secondCard]
+    sum = firstCard + secondCard
+    renderGame()
 }
 
+function renderGame(){
 
-function divide(){
-    let result = num1 / num2
-    sumEL.textContent = "Divide:" + result
+    cardEL.textContent = "Cards: " 
+    for (let i=0 ;i<cards.length;i++){
+        cardEL.textContent += cards[i] + " "
+    }
+
+    sumEL.textContent = "Sum:" + sum
+    if(sum<21){
+    message = "Do you want to draw a new card?"
+
+} else if(sum==21){
+    message = "Congrats you've got Blackjack!"
+    hasBlackJack = true
+}else if (sum>21){
+    message ="You're out of the game!"
+    isAlive = false
+}
+    messageEL.textContent = message
 }
 
-console.log("Js file updated")
+function newCard(){
+    if (isAlive==true && hasBlackJack ==false){
+        let card = getRandomCard()
+        sum +=card
+        cards.push(card)
+        renderGame()
+    }
+} 
 
 
 
 
+// let course  ={
+//     title : "learn css grid for free",
+//     lessons : 16,
+//     creator : "Awaz",
+//     length: 63,
+//     level : 2,
+//     isFree : true,
+//     tags : ["html","css"]
+// }
+
+// console.log(course.tags[0])
 
 
+//cash out!
+//console.log(hasBlackJack)
+
+// let age =21
+
+// if(age>21){
+//     console.log("Congrats you can enter the club")
+
+// }else if(age==21){
+//     console.log("you can still join the club")
+// }
+// else{
+//     console.log("Sorry! you are not allowed to enter to the club")
+// }
+
+// let isvegen = true
+// console.log(isvegen)
+
+// let hasDiscountCode = true
+
+// function processOrder(){
+//     if(hasDiscountCode){
+//         console.log("Discoun applied to food order")
+//         hasDiscountCode = false
+//     }else{
+//         console.log("No discount Applied")
+//     }
+// }
+// processOrder()
+// processOrder()
+
+//Array --- ordered list of items
+
+// let featurePosts = ["check out my netflix clone",
+//     'Here the code for my project',
+//     "i've just relunched my portfolio"]
+
+//let experiences = [
+//     "infosys inten at scrimba",
+//     "student at jain university",
+//     "data analysis intern" 
+// ]
+
+// console.log(experiences[0])
+// console.log(experiences[1])
+
+// for( let count=1; count<11; count+=2){
+//     console.log(count)
+// }
+
+// for(let i=0;i<6;i++){
+//     console.log(i)
+// }
+
+// dry -- dont repeat yourself
+
+// for (let i=0; i<featurePosts.length;i++){
+//     console.log(featurePosts[i])
+// }
+
+// let cards = [7,3,9]
+
+// for(let i=0;i<cards.length;i++){
+//     console.log(cards[i])
+// }
+
+// let sentence = ["hello","my","name","is","Awaz"]
+
+// let greetingEL = document.getElementById("greeting-el")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+// for (let i=0;i<sentence.length;i++){
+//     greetingEL.textContent += sentence[i] + " "
+// }
 
 
 
